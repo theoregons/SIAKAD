@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "69076683363",
+    "project_id": "siakad-mobile-c31a2",
+    "storage_bucket": "siakad-mobile-c31a2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69076683363:android:1cfbd63e34b24de75a8656",
+        "android_client_info": {
+          "package_name": "com.example.siakadmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDejRDPh0Ht4Mpzphoa1SJKVN1XkrpfuFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
