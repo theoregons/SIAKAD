@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.siakadmobile.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var auth: FirebaseAuth? = null
@@ -38,16 +40,35 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.save -> {
-                // Logic untuk save data
+                val getUserID = auth!!.currentUser!!.uid
+                val database = FirebaseDatabase.getInstance()
+                val getNIM: String = binding.nim.getText().toString()
+                val getNama: String = binding.nama.getText().toString()
+                val getJurusan: String = binding.jurusan.getText().toString()
+
+                val getReference: DatabaseReference
+                getReference = database.reference
+
+                if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan)) {
+                    Toast.makeText(this@MainActivity, "Data tidak boleh ada yang kosong",
+                        Toast.LENGTH_SHORT).show()
+                } else {
+                    getReference.child("Admin").child(getUserID).child("Mahasiswa").push()
+                        .setValue(data_mahasiswa(getNIM, getNama, getJurusan))
+                        .addOnCompleteListener(this) {
+                            binding.nim.setText("")
+                            binding.nama.setText("")
+                            binding.jurusan.setText("")
+                            Toast.makeText(this@MainActivity, "Data Tersimpan", Toast.LENGTH_SHORT).show()
+                        }
+                }
             }
 
             R.id.logout -> {
-                // Sign out from Firebase
                 auth?.signOut()
 
                 Toast.makeText(this@MainActivity, "Logout Berhasil", Toast.LENGTH_SHORT).show()
 
-                // Navigate back to login
                 val intent = Intent(applicationContext, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

@@ -53,6 +53,7 @@ dependencies {
 
     // Google Play Services Auth
     implementation(libs.play.services.auth)
+    implementation(libs.firebase.database)
 
     // Testing
     testImplementation(libs.junit)
