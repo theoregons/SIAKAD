@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.showdata -> {
-                // Logic untuk show data
+                startActivity(Intent(this@MainActivity, MyListData::class.java))
             }
         }
     }
