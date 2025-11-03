@@ -1,7 +1,11 @@
 package com.example.siakadmobile
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,12 +52,37 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
         holder.NIM.text = "NIM: $NIM"
         holder.Nama.text = "Nama: $Nama"
         holder.Jurusan.text = "Jurusan: $Jurusan"
-        holder.ListItem.setOnLongClickListener(object : View.OnLongClickListener {
-            override fun onLongClick(v: View?): Boolean {
-//Kodingan untuk fungsi Edit dan Delete, yang dibahas pada Tutorial Berikutnya.
-                return true
+
+        holder.ListItem.setOnLongClickListener { view ->
+            // Gunakan holder.bindingAdapterPosition instead of position
+            val currentPosition = holder.adapterPosition
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                val action = arrayOf("Update", "Delete")
+                val alert = AlertDialog.Builder(view.context)
+                alert.setItems(action) { dialog, i ->
+                    when (i) {
+                        0 -> {
+                            /* Berpindah Activity pada halaman layout updateData dan mengambil data pada
+                              listMahasiswa, berdasarkan posisinya untuk dikirim pada activity selanjutnya */
+                            val bundle = Bundle()
+                            bundle.putString("dataNIM", listMahasiswa[currentPosition].nim)
+                            bundle.putString("dataNama", listMahasiswa[currentPosition].nama)
+                            bundle.putString("dataJurusan", listMahasiswa[currentPosition].jurusan)
+                            bundle.putString("getPrimaryKey", listMahasiswa[currentPosition].key)
+                            val intent = Intent(view.context, UpdateData::class.java)
+                            intent.putExtras(bundle)
+                            context.startActivity(intent)
+                        }
+                        1 -> {
+                            // Tambahkan logic delete disini
+                        }
+                    }
+                }
+                alert.create()
+                alert.show()
             }
-        })
+            true
+        }
     }
 
     override fun getItemCount(): Int {
