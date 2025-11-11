@@ -19,6 +19,14 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     private val context: Context
 
+    //Membuat Interfece
+    interface dataListener {
+        fun onDeleteData(data: data_mahasiswa?, position: Int)
+    }
+
+    //Deklarasi objek dari Interfece
+    var listener: dataListener? = null
+
     //ViewHolder Digunakan Untuk Menyimpan Referensi Dari View-View
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val NIM: TextView
@@ -84,7 +92,7 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
                             context.startActivity(intent)
                         }
                         1 -> {
-                            // Tambahkan logic delete disini
+                            listener?.onDeleteData(listMahasiswa.get(position), position)
                         }
                     }
                 }
@@ -103,5 +111,6 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
     //Membuat Konstruktor, untuk menerima input dari Database
     init {
         this.context = context
+        this.listener = context as MyListData // Baris ini ditambahkan
     }
 }
