@@ -35,9 +35,9 @@
 
 ## Halaman Update Data Mahasiswa
 <p align="center">
-  <img width="332" height="740" alt="Read Data Mahasiswa" src="https://github.com/user-attachments/assets/496a98f1-13e5-4a61-a986-8ddbbbabd2c9" /> 
-  <img width="332" height="740" alt="Read Data Mahasiswa" src="https://github.com/user-attachments/assets/381e5ac7-309a-4b09-9a87-a3fdef5ef31b" /> 
-  <img width="332" height="740" alt="Read Data Mahasiswa" src="https://github.com/user-attachments/assets/53eb3652-e1db-40f5-b42b-0e4589bbc746" /> 
+  <img width="331" height="728" alt="PPB1" src="https://github.com/user-attachments/assets/39113c88-5c25-41bb-8835-2e11dba7ba96" />
+  <img width="446" height="969" alt="PPB2" src="https://github.com/user-attachments/assets/8bcdb3b4-8bf7-48ee-85f7-72501d43dadc" />
+  <img width="417" height="966" alt="PPB3" src="https://github.com/user-attachments/assets/0a05fa6d-7d32-40aa-94e5-8272dc52997c" />
 </p>
 
  
