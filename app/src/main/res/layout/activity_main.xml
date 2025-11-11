@@ -32,6 +32,20 @@
             android:ems="10"
             android:hint="Jurusan"
             android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/jenisKelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Jenis Kelamin"
+            android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Alamat"
+            android:inputType="textPersonName" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -24,12 +24,16 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
         val NIM: TextView
         val Nama: TextView
         val Jurusan: TextView
+        val JenisKelamin: TextView
+        val Alamat: TextView
         val ListItem: LinearLayout
 
         init {//Menginisialisasi View yang terpasang pada layout RecyclerView kita
             NIM = itemView.findViewById(R.id.nimx)
             Nama = itemView.findViewById(R.id.namax)
             Jurusan = itemView.findViewById(R.id.jurusanx)
+            JenisKelamin = itemView.findViewById(R.id.jenisKelamin)
+            Alamat = itemView.findViewById(R.id.alamat)
             ListItem = itemView.findViewById(R.id.list_item)
         }
     }
@@ -47,11 +51,15 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
         val NIM: String? = listMahasiswa.get(position).nim
         val Nama: String? = listMahasiswa.get(position).nama
         val Jurusan: String? = listMahasiswa.get(position).jurusan
+        val JenisKelamin: String? = listMahasiswa.get(position).jenisKelamin
+        val Alamat: String? = listMahasiswa.get(position).alamat
 
         //Memasukan Nilai/Value kedalam View (TextView: NIM, Nama, Jurusan)
         holder.NIM.text = "NIM: $NIM"
         holder.Nama.text = "Nama: $Nama"
         holder.Jurusan.text = "Jurusan: $Jurusan"
+        holder.JenisKelamin.text = "JenisKelamin: $JenisKelamin"
+        holder.Alamat.text = "Alamat: $Alamat"
 
         holder.ListItem.setOnLongClickListener { view ->
             // Gunakan holder.bindingAdapterPosition instead of position
@@ -68,6 +76,8 @@ class RecyclerViewAdapter( private val listMahasiswa: ArrayList<data_mahasiswa>,
                             bundle.putString("dataNIM", listMahasiswa[currentPosition].nim)
                             bundle.putString("dataNama", listMahasiswa[currentPosition].nama)
                             bundle.putString("dataJurusan", listMahasiswa[currentPosition].jurusan)
+                            bundle.putString("dataJenisKelamin", listMahasiswa[currentPosition].jenisKelamin)
+                            bundle.putString("dataAlamat", listMahasiswa[currentPosition].alamat)
                             bundle.putString("getPrimaryKey", listMahasiswa[currentPosition].key)
                             val intent = Intent(view.context, UpdateData::class.java)
                             intent.putExtras(bundle)

@@ -45,20 +45,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val getNIM: String = binding.nim.getText().toString()
                 val getNama: String = binding.nama.getText().toString()
                 val getJurusan: String = binding.jurusan.getText().toString()
+                val getJenisKelamin: String = binding.jenisKelamin.text.toString()
+                val getAlamat: String = binding.alamat.text.toString()
 
                 val getReference: DatabaseReference
                 getReference = database.reference
 
-                if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan)) {
+                if (isEmpty(getNIM) || isEmpty(getNama) || isEmpty(getJurusan) || isEmpty(getJenisKelamin) || isEmpty(getAlamat)) {
                     Toast.makeText(this@MainActivity, "Data tidak boleh ada yang kosong",
                         Toast.LENGTH_SHORT).show()
                 } else {
                     getReference.child("Admin").child(getUserID).child("Mahasiswa").push()
-                        .setValue(data_mahasiswa(getNIM, getNama, getJurusan))
+                        .setValue(data_mahasiswa(getNIM, getNama, getJurusan, getJenisKelamin, getAlamat))
                         .addOnCompleteListener(this) {
                             binding.nim.setText("")
                             binding.nama.setText("")
                             binding.jurusan.setText("")
+                            binding.jenisKelamin.setText("")
+                            binding.alamat.setText("")
+
                             Toast.makeText(this@MainActivity, "Data Tersimpan", Toast.LENGTH_SHORT).show()
                         }
                 }

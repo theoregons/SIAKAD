@@ -31,6 +31,22 @@
         android:hint="Jurusan Baru"
         android:inputType="textPersonName" />
 
+    <EditText
+        android:id="@+id/new_jenisKelamin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Jenis Baru"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/new_alamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Alamat Baru"
+        android:inputType="textPersonName" />
+
     <Button
         android:id="@+id/update"
         android:layout_width="match_parent"
